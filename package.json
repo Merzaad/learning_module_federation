@@ -1,0 +1,18 @@
+{
+  "name": "learning_module_federation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n layout,outlet,host -c blue,green,yellow \"pnpm --filter layout dev\" \"pnpm --filter outlet dev\" \"pnpm --filter host dev\"",
+    "dev:layout": "pnpm --filter layout dev",
+    "dev:outlet": "pnpm --filter outlet dev",
+    "dev:host": "pnpm --filter host dev",
+    "build": "pnpm --filter layout build && pnpm --filter outlet build && pnpm --filter host build",
+    "preview": "concurrently -n layout,outlet,host -c blue,green,yellow \"pnpm --filter layout preview\" \"pnpm --filter outlet preview\" \"pnpm --filter host preview\""
+  },
+  "devDependencies": {
+    "@module-federation/vite": "^1.16.12",
+    "concurrently": "^9.2.1"
+  },
+  "packageManager": "pnpm@10.29.3"
+}

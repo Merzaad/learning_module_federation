@@ -1,0 +1,25 @@
+.app-shell {
+  padding: 0.5rem;
+  border: dashed;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  height: 100vh;
+  overflow-y: auto;
+}
+.app-shell-title {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.layout-root {
+  min-height: 0;
+}
+
+.loading {
+  color: #6b7280;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  height: 40vh;
+}
