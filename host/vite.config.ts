@@ -1,39 +1,37 @@
-import { defineConfig } from 'vite'
-import { federation } from '@module-federation/vite'
-import react from '@vitejs/plugin-react'
-import { dependencies } from './package.json'
+import { defineConfig } from "vite";
+import { federation } from "@module-federation/vite";
+import react from "@vitejs/plugin-react";
+import { dependencies } from "./package.json";
 
 export default defineConfig({
   plugins: [
     federation({
       dts: false,
       dev: { disableDynamicRemoteTypeHints: true, remoteHmr: true },
-      name: 'host',
+      name: "host",
       remotes: {
         layout: {
-          type: 'module',
-          name: 'layout',
-          entry: 'http://localhost:5001/remoteEntry.js',
-          entryGlobalName: 'layout',
-          shareScope: 'default',
+          type: "module",
+          name: "layout",
+          entry: "http://localhost:5001/remoteEntry.js",
+          shareScope: "default",
         },
         outlet: {
-          type: 'module',
-          name: 'outlet',
-          entry: 'http://localhost:5002/remoteEntry.js',
-          entryGlobalName: 'outlet',
-          shareScope: 'default',
+          type: "module",
+          name: "outlet",
+          entry: "http://localhost:5002/remoteEntry.js",
+          shareScope: "default",
         },
       },
       exposes: {},
-      filename: 'remoteEntry.js',
+      filename: "remoteEntry.js",
       shared: {
         react: {
           requiredVersion: dependencies.react,
           singleton: true,
         },
-        'react-dom': {
-          requiredVersion: dependencies['react-dom'],
+        "react-dom": {
+          requiredVersion: dependencies["react-dom"],
           singleton: true,
         },
       },
@@ -41,10 +39,9 @@ export default defineConfig({
     react(),
   ],
   server: {
-    port: 5000,
-    origin: 'http://localhost:5000',
+    port: 3000,
   },
   build: {
-    target: 'chrome89',
+    target: "chrome89",
   },
-})
+});

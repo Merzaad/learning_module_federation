@@ -1,8 +1,11 @@
 <script lang="ts">
+  const {state} = $props()
+ 
 </script>
 
 <header class="layout">
   layout
+  <div>{state}</div>
 </header>
 
 <style>

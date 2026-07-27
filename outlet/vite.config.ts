@@ -1,7 +1,7 @@
-import { defineConfig } from "vite"
-import { federation } from "@module-federation/vite"
-import react, { reactCompilerPreset } from "@vitejs/plugin-react"
-import babel from "@rolldown/plugin-babel"
+import { defineConfig } from "vite";
+import { federation } from "@module-federation/vite";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+import babel from "@rolldown/plugin-babel";
 
 export default defineConfig({
   plugins: [
@@ -12,7 +12,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       manifest: true,
       exposes: {
-        "./App": "./src/App.tsx",
+        "./outlet": "./src/App.tsx",
       },
       remotes: {},
     }),
@@ -31,4 +31,4 @@ export default defineConfig({
   build: {
     target: "chrome89",
   },
-})
+});
