@@ -1,11 +1,21 @@
 <script lang="ts">
-  const {state} = $props()
- 
+  import { onMount } from "svelte"
+
+  const {eventManager} = $props()
+  onMount(() => {
+    const unsubscribe = eventManager.subscribe(
+      'TEST',
+      (event: any) => {
+       console.log(event)
+      }
+    );
+
+    return unsubscribe;
+  });
 </script>
 
 <header class="layout">
   layout
-  <div>{state}</div>
 </header>
 
 <style>

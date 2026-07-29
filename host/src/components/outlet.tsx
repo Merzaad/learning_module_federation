@@ -1,12 +1,12 @@
-import { lazy, Suspense } from "react";
-import { useEventContext } from "../context/events";
-const OutletApp = lazy(() => import("outlet/outlet"));
+import { lazy, Suspense } from "react"
+import { useEventManager } from "../event-manager/presentation/event-manager-provider"
+const OutletApp = lazy(() => import("outlet/outlet"))
 
 export default function Outlet() {
-  const { state, setState } = useEventContext();
+  const eventManager = useEventManager()
   return (
-    <Suspense fallback={<p className='loading'>Loading outlet</p>}>
-      <OutletApp state={state} setState={setState} />
+    <Suspense fallback={<p className="loading">Loading outlet</p>}>
+      <OutletApp eventManager={eventManager} />
     </Suspense>
-  );
+  )
 }

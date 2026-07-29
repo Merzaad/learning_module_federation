@@ -1,21 +1,23 @@
-import "./App.css";
+import "./App.css"
 
-interface Props {
-  state: number;
-  setState: React.Dispatch<React.SetStateAction<number>>;
-}
-function App(props: Props) {
-  const increase = () => {
-    props.setState((prev) => prev + 1);
-  };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function App(props: any) {
+  const toggleSidebar = () => {
+    props.eventManager.publish({
+      type: "TEST",
+      payload: {
+        collapsed: true,
+      },
+    })
+  }
   return (
     <>
-      <main id='outlet'>
+      <main id="outlet">
         Outlet
-        <button onClick={increase}>{props.state}</button>
+        <button onClick={toggleSidebar}>TEST</button>
       </main>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

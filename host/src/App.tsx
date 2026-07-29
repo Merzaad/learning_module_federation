@@ -1,18 +1,18 @@
-import "./App.css";
-import Layout from "./components/layout";
-import Outlet from "./components/outlet";
-import { EventProvider } from "./context/events";
+import "./App.css"
+import Layout from "./components/layout"
+import Outlet from "./components/outlet"
+import { EventManagerProvider } from "./event-manager/presentation/event-manager-provider"
 
 export default function App() {
   return (
-    <div className='app-shell'>
-      <div className='app-shell-title'>app-shell</div>
+    <div className="app-shell">
+      <div className="app-shell-title">app-shell</div>
       <main>
-        <EventProvider>
+        <EventManagerProvider>
           <Layout />
           <Outlet />
-        </EventProvider>
+        </EventManagerProvider>
       </main>
     </div>
-  );
+  )
 }
