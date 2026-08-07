@@ -2,30 +2,54 @@
   import { onMount } from "svelte"
 
   const {eventManager} = $props()
+  let state = $state("initial")
   onMount(() => {
-    const unsubscribe = eventManager.subscribe(
-      'TEST',
+    const unsubscribeSetState = eventManager.subscribe(
+      'setState',
       (event: any) => {
-       console.log(event)
+       state = event.payload
       }
     );
-
-    return unsubscribe;
+    const unsubscribeReset = eventManager.subscribe(
+      'reset',
+      () => {
+       state = "initial"
+      }
+    );
+    return () => {
+      unsubscribeSetState()
+      unsubscribeReset()
+    };
   });
 </script>
 
-<header class="layout">
+<div class="layout">
+  <header >
   layout
 </header>
+  <div class="state">
+    {state}
+  </div>
+</div>
 
 <style>
   .layout {
     border: dashed;
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
     border-radius: 0.5rem;
     padding: 2rem;
+  }
+   .state {
+    border: dashed;
+    display: flex;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: max-content;
+    margin: auto
   }
 
 </style>
